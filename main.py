@@ -1,5 +1,14 @@
 import matplotlib.pyplot as plt
 
+x1 = int(input("Enter the first X value: "))
+x1 = int(input("Enter the first X value: "))
+x1 = int(input("Enter the first X value: "))
+
+x1 = int(input("Enter the first X value: "))
+x1 = int(input("Enter the first X value: "))
+x1 = int(input("Enter the first X value: "))
+
+
 # x axis values
 x = [1,2,3]
 # corresponding y axis values
