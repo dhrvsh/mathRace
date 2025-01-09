@@ -1,5 +1,5 @@
-# pip install matplotlib
-# pip install customtkinter
+# Modules: matplotlib, customtkinter 
+# Font: Cartograph CF
 
 import matplotlib.pyplot as plt
 import customtkinter
@@ -10,9 +10,9 @@ addition = 30
 inputScreen = customtkinter.CTk()
 inputScreen.geometry("600x"+str(mainy+addition*8))
 inputScreen.resizable(False, False)
-inputScreen.title("Project Castor")
+inputScreen.title("ProjectCastor Line Graph Plotter")
 
-title = customtkinter.CTkLabel(inputScreen, text="Project Castor", fg_color="transparent", font=('Cartograph CF', 35)).place(x=150, y=20)
+title = customtkinter.CTkLabel(inputScreen, text="Line Graph Plotter", fg_color="transparent", font=('Cartograph CF', 35)).place(x=110, y=20)
 
 xx = 250
 lbl = 50
@@ -22,9 +22,6 @@ def saveVars():
     y = [int(y1entry.get()),int(y2entry.get()),int(y3entry.get()),int(y4entry.get()),int(y5entry.get())]
 
     plt.plot(x, y)
-
-    for i, (xi, yi) in enumerate(zip(x, y)):
-        plt.annotate(f'({xi}, {yi})', (xi, yi), textcoords="offset points", xytext=(0, 10), ha='center')
 
     plt.title('Plotted Graph')
     plt.xlabel('x axis')
