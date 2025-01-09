@@ -1,71 +1,80 @@
+# pip install matplotlib
+# pip install customtkinter
+
 import matplotlib.pyplot as plt
 import customtkinter
-from pyfonts import load_font
 
-font = load_font(
-    font_url=r"https://github.com/dhrvsh/mathRace/blob/main/Bricolage_Grotesque/BricolageGrotesque.ttf?raw=true"
-)
+mainy = 85
+addition = 30
+
 inputScreen = customtkinter.CTk()
-inputScreen.geometry("600x350")
+inputScreen.geometry("600x"+str(mainy+addition*8))
 inputScreen.resizable(False, False)
 inputScreen.title("Project Castor")
 
-title = customtkinter.CTkLabel(inputScreen, text="Project Castor", fg_color="transparent", font=('Cartograph CF', 35)).place(x=150, y=10)
+title = customtkinter.CTkLabel(inputScreen, text="Project Castor", fg_color="transparent", font=('Cartograph CF', 35)).place(x=150, y=20)
 
-# label = customtkinter.CTkLabel(inputScreen, text="CTkLabel", fg_color="transparent", font=("Cascadia Mono", 40)).place(x=0, y=0)
+xx = 250
+lbl = 50
 
-xx = 270
+def saveVars():
+    x = [int(x1entry.get()),int(x2entry.get()),int(x3entry.get()),int(x4entry.get()),int(x5entry.get())]
+    y = [int(y1entry.get()),int(y2entry.get()),int(y3entry.get()),int(y4entry.get()),int(y5entry.get())]
 
-firstlabel = customtkinter.CTkLabel(inputScreen, text="First X and Y values: ", fg_color="transparent", font=('Cartograph CF', 15)).place(x=20, y=85)
-secondlabel = customtkinter.CTkLabel(inputScreen, text="Second X and Y values: ", fg_color="transparent", font=('Cartograph CF', 15)).place(x=20, y=135)
-thirdlabel = customtkinter.CTkLabel(inputScreen, text="Third X and Y values: ", fg_color="transparent", font=('Cartograph CF', 15)).place(x=20, y=185)
+    plt.plot(x, y)
+
+    for i, (xi, yi) in enumerate(zip(x, y)):
+        plt.annotate(f'({xi}, {yi})', (xi, yi), textcoords="offset points", xytext=(0, 10), ha='center')
+
+    plt.title('Plotted Graph')
+    plt.xlabel('x axis')
+    plt.ylabel('y axis')
+
+    plt.grid(True)
+
+    inputScreen.destroy()
+    plt.show()
+
+
+firstlabel = customtkinter.CTkLabel(inputScreen, text="First X and Y values: ", fg_color="transparent", font=('Cartograph CF', 15)).place(x=lbl, y=mainy)
+secondlabel = customtkinter.CTkLabel(inputScreen, text="Second X and Y values: ", fg_color="transparent", font=('Cartograph CF', 15)).place(x=lbl, y=mainy+addition)
+thirdlabel = customtkinter.CTkLabel(inputScreen, text="Third X and Y values: ", fg_color="transparent", font=('Cartograph CF', 15)).place(x=lbl, y=mainy+addition*2)
+fourthlabel = customtkinter.CTkLabel(inputScreen, text="Fourth X and Y values: ", fg_color="transparent", font=('Cartograph CF', 15)).place(x=lbl, y=mainy+addition*3)
+fifthlabel = customtkinter.CTkLabel(inputScreen, text="Fifth X and Y values: ", fg_color="transparent", font=('Cartograph CF', 15)).place(x=lbl, y=mainy+addition*4)
 
 x1entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter first X", width=150)
-x1entry.place(x=xx, y=85)
+x1entry.place(x=xx, y=mainy)
 
 x2entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter second X", width=150)
-x2entry.place(x=xx, y=135)
+x2entry.place(x=xx, y=mainy+addition)
 
 x3entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter third X", width=150)
-x3entry.place(x=xx, y=185)
+x3entry.place(x=xx, y=mainy+addition*2)
+
+x4entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter fourth X", width=150)
+x4entry.place(x=xx, y=mainy+addition*3)
+
+x5entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter fifth X", width=150)
+x5entry.place(x=xx, y=mainy+addition*4)
 
 
 y1entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter first Y", width=150)
-y1entry.place(x=xx+160, y=85)
+y1entry.place(x=xx+160, y=mainy)
 
 y2entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter second Y", width=150)
-y2entry.place(x=xx+160, y=135)
+y2entry.place(x=xx+160, y=mainy+addition)
 
 y3entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter third Y", width=150)
-y3entry.place(x=xx+160, y=185)
+y3entry.place(x=xx+160, y=mainy+addition*2)
+
+y4entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter fourth Y", width=150)
+y4entry.place(x=xx+160, y=mainy+addition*3)
+
+y5entry = customtkinter.CTkEntry(inputScreen, placeholder_text="Enter fifth Y", width=150)
+y5entry.place(x=xx+160, y=mainy+addition*4)
+
+plotGraph = customtkinter.CTkButton(inputScreen, text="Plot the Graph", font=('Cartograph CF', 20), command=saveVars)
+plotGraph.place(x=210, y=mainy+addition*5+20)
 
 inputScreen.mainloop()
 
-x1 = int(input("Enter the first X value: "))
-y1 = int(input("Enter the first Y value: "))
-
-x2 = int(input("Enter the second X value: "))
-y2 = int(input("Enter the second Y value: "))
-
-x3 = int(input("Enter the third X value: "))
-y3 = int(input("Enter the third Y value: "))
-
-
-# x axis values
-x = [x1,x2,x3]
-# corresponding y axis values
-y = [y1,y2,y3]
-
-# plotting the points
-plt.plot(x, y)
-
-# naming the x axis
-plt.xlabel('x - axis')
-# naming the y axis
-plt.ylabel('y - axis')
-
-# giving a title to my graph
-plt.title('My first graph!')
-
-# function to show the plot
-plt.show()
