@@ -77,4 +77,3 @@ plotGraph = customtkinter.CTkButton(inputScreen, text="Plot the Graph", font=('C
 plotGraph.place(x=210, y=mainy+addition*5+20)
 
 inputScreen.mainloop()
-
